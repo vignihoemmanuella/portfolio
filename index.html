@@ -226,24 +226,66 @@ nav ul {
         margin: 15px 0;
     }
 }
+
+.hamburger {
+    display: none; 
+}
+
+nav ul {
+    display: flex; 
+    list-style: none;
+    gap: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex; 
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white; 
+    }
+
+    nav ul {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--accent);
+        padding: 20px 0;
+    }
+
+    
+    nav ul.active {
+        display: flex;
+    }
+}
     </style>
 </head>
 <body>
-<nav class="flex justify-between items-center p-4 relative">
+<nav>
     <div class="logo">VIGNIHO EMMANUELLA</div>
-
-    <ul id="nav-list" class="hidden md:flex gap-4">
+    <ul id="nav-list">
         <li><a href="#home">Accueil</a></li>
         <li><a href="#about">À propos</a></li>
         <li><a href="#skills">Compétences</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-
-    <button class="hamburger md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 border-none bg-transparent" onclick="toggleMenu()" style="display: flex !important;">
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
-        <span style="display: block; width: 25px; height: 3px; background-color: white;"></span>
+    <button class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </button>
 </nav>
 <div id="mobile-menu" class="hidden flex-col items-center gap-4 py-4 bg-black/90 md:hidden">
@@ -380,9 +422,9 @@ nav ul {
 
 </body>
 <script>
-function toggleMenu() {
-    const navList = document.querySelector('nav ul');
-    navList.classList.toggle('active');
-}
+    function toggleMenu() {
+        const navList = document.getElementById("nav-list");
+        navList.classList.toggle("active");
+    }
 </script>
 </html>
